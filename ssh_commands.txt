@@ -1,0 +1,11 @@
+ssh -i "spark-cluster-pair.pem" hadoop@ec2_ip
+
+ssh -i "spark-cluster-pair.pem" -N -D 8157 hadoop@ec2_ip
+
+
+hdfs dfs -mkdir /user/cities_data
+hdfs dfs -copyFromLocal spark_write_file.py /user/cities_data/
+
+
+http://ec2_ip:50070/
+http://ec2_ip:18080/
