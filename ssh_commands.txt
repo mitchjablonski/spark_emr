@@ -9,3 +9,9 @@ hdfs dfs -copyFromLocal spark_write_file.py /user/cities_data/
 
 http://ec2_ip:50070/
 http://ec2_ip:18080/
+
+
+aws emr create-cluster --name EMR_Testing --use-default-roles --release-label emr-5.28.0 --instance-count 3 --applications Name=Spark  --ec2-attributes KeyName=spark-cluster-pair --instance-type m5.xlarge --instance-count 3 --auto-terminate --bootstrap-actions Path=s3://emr-related/bootstrap_emr.sh
+
+
+spark-submit --master yarn file_to_execute.py
